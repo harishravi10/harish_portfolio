@@ -2,12 +2,15 @@ import React from 'react';
 import { portfolioData } from '../data/portfolioData';
 import { CodeCard } from './CodeCard';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
+import { ThreeCanvas } from './ThreeCanvas';
+import { TiltCard } from './TiltCard';
 import { 
   ArrowRight, 
   Mail, 
   MapPin, 
   GraduationCap, 
-  Database
+  Database,
+  Sparkles
 } from 'lucide-react';
 
 export const Hero: React.FC = () => {
@@ -16,9 +19,12 @@ export const Hero: React.FC = () => {
   return (
     <section 
       id="home" 
-      className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden flex flex-col justify-center"
+      className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden flex flex-col justify-center min-h-[92vh]"
       aria-label="Introduction"
     >
+      {/* 3D WebGL Motion Canvas */}
+      <ThreeCanvas />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
@@ -26,9 +32,10 @@ export const Hero: React.FC = () => {
           <div className="lg:col-span-7 space-y-6 text-left">
             
             {/* Status Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs sm:text-sm font-medium">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs sm:text-sm font-medium backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>{personal.statusBadge}</span>
+              <Sparkles className="w-3.5 h-3.5 text-blue-400 ml-1" />
             </div>
 
             {/* Greetings & Titles */}
@@ -54,15 +61,15 @@ export const Hero: React.FC = () => {
 
             {/* Academic & Location Quick Chips */}
             <div className="flex flex-wrap items-center gap-3 pt-1 text-xs sm:text-sm text-slate-400">
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-900/60 border border-slate-800">
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-900/70 border border-slate-800 backdrop-blur-sm">
                 <GraduationCap className="w-4 h-4 text-indigo-400" />
                 <span>{personal.shortCollege}</span>
               </div>
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-900/60 border border-slate-800">
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-900/70 border border-slate-800 backdrop-blur-sm">
                 <MapPin className="w-3.5 h-3.5 text-rose-400" />
                 <span>{personal.location}</span>
               </div>
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-900/60 border border-slate-800">
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-900/70 border border-slate-800 backdrop-blur-sm">
                 <Database className="w-3.5 h-3.5 text-blue-400" />
                 <span>Java &bull; MySQL &bull; DSA</span>
               </div>
@@ -82,7 +89,7 @@ export const Hero: React.FC = () => {
               {/* Secondary: Contact Me */}
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900/90 hover:bg-slate-800/90 text-slate-200 hover:text-white border border-slate-700/80 hover:border-slate-600 font-semibold text-sm sm:text-base transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900/90 hover:bg-slate-800/90 text-slate-200 hover:text-white border border-slate-700/80 hover:border-slate-600 font-semibold text-sm sm:text-base transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] backdrop-blur-sm"
               >
                 <Mail className="w-4 h-4 text-blue-400" />
                 <span>Contact Me</span>
@@ -116,15 +123,15 @@ export const Hero: React.FC = () => {
 
             {/* Quick Stat Pill Highlights */}
             <div className="grid grid-cols-3 gap-3 pt-4 border-t border-slate-800/80 max-w-lg">
-              <div className="p-2.5 rounded-xl bg-[#0b0f1a]/60 border border-slate-800/60">
+              <div className="p-2.5 rounded-xl bg-[#0b0f1a]/80 border border-slate-800/60 backdrop-blur-sm">
                 <div className="text-xs text-slate-400 font-mono">Specialization</div>
                 <div className="text-sm font-semibold text-white mt-0.5">Java Full Stack</div>
               </div>
-              <div className="p-2.5 rounded-xl bg-[#0b0f1a]/60 border border-slate-800/60">
+              <div className="p-2.5 rounded-xl bg-[#0b0f1a]/80 border border-slate-800/60 backdrop-blur-sm">
                 <div className="text-xs text-slate-400 font-mono">Institution</div>
                 <div className="text-sm font-semibold text-white mt-0.5">SSN Chennai</div>
               </div>
-              <div className="p-2.5 rounded-xl bg-[#0b0f1a]/60 border border-slate-800/60">
+              <div className="p-2.5 rounded-xl bg-[#0b0f1a]/80 border border-slate-800/60 backdrop-blur-sm">
                 <div className="text-xs text-slate-400 font-mono">Graduation</div>
                 <div className="text-sm font-semibold text-white mt-0.5">Batch 2028</div>
               </div>
@@ -132,10 +139,12 @@ export const Hero: React.FC = () => {
 
           </div>
 
-          {/* Right Column: Interactive Code Visual */}
+          {/* Right Column: 3D Interactive Tilt Code Card */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
             <div className="w-full max-w-lg">
-              <CodeCard />
+              <TiltCard maxTilt={8} perspective={1100} glareOpacity={0.16}>
+                <CodeCard />
+              </TiltCard>
             </div>
           </div>
 
