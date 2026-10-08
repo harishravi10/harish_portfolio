@@ -11,9 +11,12 @@ import { Journey } from './components/Journey';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { BackgroundGlow } from './components/BackgroundGlow';
+import { CinemaCanvas } from './three/CinemaCanvas';
+import { CinemaHUD } from './three/CinemaHUD';
 
 export const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>('home');
+  const [scrollProgress, setScrollProgress] = useState<number>(0);
 
   useEffect(() => {
     const sectionIds = ['home', 'about', 'skills', 'projects', 'education', 'journey', 'contact'];
@@ -42,14 +45,20 @@ export const App: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-[#07090e] text-slate-200 selection:bg-blue-600/30 selection:text-blue-200">
-      {/* Subtle Ambient Background Gradients & Matrix */}
+      {/* 3D Master WebGL Universe & Alive Typography */}
+      <CinemaCanvas onProgressUpdate={setScrollProgress} />
+
+      {/* Cyberpunk Executive HUD */}
+      <CinemaHUD scrollProgress={scrollProgress} />
+
+      {/* Subtle Ambient Background Gradients */}
       <BackgroundGlow />
 
       {/* Main Sticky Navbar */}
       <Navbar activeSection={activeSection} />
 
-      {/* Page Content */}
-      <main className="relative z-10">
+      {/* Interactive Content Layers */}
+      <main className="relative z-10 pointer-events-auto">
         <Hero />
         <About />
         <Skills />
